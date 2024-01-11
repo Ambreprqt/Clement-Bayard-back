@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/photographe")
-@CrossOrigin(origins = "http://localhost:4200")
 public class PhotographeController {
     @Autowired
     private PhotographeService photographeService;

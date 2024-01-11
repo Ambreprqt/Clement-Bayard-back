@@ -19,9 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/photos")
-@CrossOrigin(origins = "http://localhost:4200")
 public class PhotoController {
-    ModelMapper modelMapper= new ModelMapper();
     private final PhotoService photoService;
     private final PhotographeService photographeService;
     @Autowired
