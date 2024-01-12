@@ -1,6 +1,5 @@
 package com.clementbayard.clement_ws.photo;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -63,7 +62,7 @@ public class PhotoController {
     @GetMapping("/{filename}")
     public ResponseEntity<byte[]> getPhoto(@PathVariable String filename) {
         try {
-            String photosDirectory = "photos";
+            String photosDirectory = "src/main/resources/photos";
             Path imagePath = Paths.get(photosDirectory, filename);
             byte[] imageBytes = Files.readAllBytes(imagePath);
 
