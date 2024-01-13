@@ -78,7 +78,6 @@
                             <resources>
                                 <resource>
                                     <directory>src/main/resources/photos</directory>
-                                    <filtering>true</filtering>
                                 </resource>
                             </resources>
                         </configuration>
@@ -89,15 +88,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                    <executable>true</executable>
-                </configuration>
             </plugin>
         </plugins>
 
@@ -107,6 +97,7 @@
             </resource>
         </resources>
     </build>
+
 
 
 </project>
