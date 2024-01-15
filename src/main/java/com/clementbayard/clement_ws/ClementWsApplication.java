@@ -16,12 +16,11 @@ import java.util.Base64;
 @SpringBootApplication
 public class ClementWsApplication {
 
-    private String allowedUrl="http://localhost:4200";
+    private String allowedUrl="https://clementbayardphotographe.com";
     static Logger logger= LogManager.getLogger(ClementWsApplication.class);
     public static void main(String[] args) {
         SpringApplication.run(ClementWsApplication.class, args);
         logger.info("API CLEMENT BAYARD START");
-
     }
     @Bean
     public TomcatServletWebServerFactory tomcatServletWebServerFactory() {
@@ -39,13 +38,23 @@ public class ClementWsApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                if (allowedUrl != null) {
-                    logger.info("Allowed entering urls : " + allowedUrl);
-                    registry.addMapping("/**").allowedOrigins(allowedUrl).allowedMethods("GET", "POST");
-                }
+                logger.info("Allowed entering urls : " + allowedUrl);
+
+                registry.addMapping("/**")
+                        .allowedOrigins(allowedUrl)
+                        .allowedMethods("GET", "POST")
+                        .allowedHeaders("Content-Type", "Authorization")
+                        .exposedHeaders("Content-Type", "Authorization")
+                        .maxAge(3600);
+
+                registry.addMapping("/upload")
+                        .allowedOrigins()
+                        .allowedMethods()
+                        .allowedHeaders("Content-Type", "Authorization")
+                        .exposedHeaders("Content-Type", "Authorization")
+                        .maxAge(3600);
             }
         };
     }
-
 
 }

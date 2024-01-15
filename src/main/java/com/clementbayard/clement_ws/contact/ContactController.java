@@ -17,7 +17,7 @@ public class ContactController {
     @PostMapping("/send-email")
     public String envoyerEmail(@RequestBody ContactForm contactForm) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("ambre.prqt@gmail.com");
+        message.setTo("bayard.clt@gmail.com");
         message.setFrom(contactForm.getEmail());
         message.setSubject("Nouveau message de contact depuis votre site web");
         message.setText("Nom : " + contactForm.getNom() + "\nPrénom : " +contactForm.getPrenom() + "\nE-mail: " + contactForm.getEmail() + "\nNuméro de téléphone: " + contactForm.getNumero()+"\nMessage: " + contactForm.getMessage());
