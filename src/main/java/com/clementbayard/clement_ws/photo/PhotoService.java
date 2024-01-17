@@ -1,6 +1,7 @@
 package com.clementbayard.clement_ws.photo;
 
 
+import net.coobird.thumbnailator.Thumbnails;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.clementbayard.clement_ws.photographe.Photographe;
 import com.clementbayard.clement_ws.photographe.PhotographeDto;
 
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -71,5 +78,18 @@ public class PhotoService {
             photoDtos.add(modelMapper.map(photo, PhotoDto.class));
         }
         return photoDtos;
+    }
+
+    public byte[] compressImage(InputStream inputStream) throws IOException {
+        BufferedImage originalImage = ImageIO.read(inputStream);
+
+        BufferedImage compressedImage = Thumbnails.of(originalImage)
+                .size(800,800)
+                .outputQuality(1)
+                .asBufferedImage();
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(compressedImage, "jpg", baos); // Vous pouvez ajuster le format selon vos besoins
+        return baos.toByteArray();
     }
 }

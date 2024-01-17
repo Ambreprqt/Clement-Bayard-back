@@ -16,7 +16,7 @@ import java.util.Base64;
 @SpringBootApplication
 public class ClementWsApplication {
 
-    private String allowedUrl="https://clementbayardphotographe.com";
+    private String allowedUrl="http://localhost:4200";
     static Logger logger= LogManager.getLogger(ClementWsApplication.class);
     public static void main(String[] args) {
         SpringApplication.run(ClementWsApplication.class, args);
