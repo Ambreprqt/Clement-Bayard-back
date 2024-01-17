@@ -1,22 +1,17 @@
 package com.clementbayard.clement_ws.photo;
 
-import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import com.clementbayard.clement_ws.photographe.PhotographeDto;
 import com.clementbayard.clement_ws.photographe.PhotographeService;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
+import org.springframework.http.CacheControl;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -80,6 +75,7 @@ public class PhotoController {
             headers.setContentType(MediaType.IMAGE_JPEG);
             headers.setContentDispositionFormData("attachment", filename);
             headers.setContentLength(compressedImageBytes.length);
+            headers.setCacheControl(CacheControl.maxAge(3600, TimeUnit.SECONDS).cachePublic().getHeaderValue());
 
             return ResponseEntity.ok()
                     .headers(headers)
