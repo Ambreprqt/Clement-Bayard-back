@@ -84,12 +84,12 @@ public class PhotoService {
         BufferedImage originalImage = ImageIO.read(inputStream);
 
         BufferedImage compressedImage = Thumbnails.of(originalImage)
-                .size(800,800)
+                .size(700,700)
                 .outputQuality(1)
                 .asBufferedImage();
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(compressedImage, "jpg", baos); // Vous pouvez ajuster le format selon vos besoins
+        ImageIO.write(compressedImage, "jpg", baos);
         return baos.toByteArray();
     }
 }
