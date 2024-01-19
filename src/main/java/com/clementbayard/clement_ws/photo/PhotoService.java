@@ -88,6 +88,7 @@ public class PhotoService {
                 .outputQuality(0.7)
                 .asBufferedImage();
 
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(compressedImage, "jpg", baos);
         return baos.toByteArray();
