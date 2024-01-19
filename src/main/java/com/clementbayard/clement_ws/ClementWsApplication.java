@@ -16,7 +16,9 @@ import java.util.Base64;
 @SpringBootApplication
 public class ClementWsApplication {
 
-    private String allowedUrl="https://clementbayardphotographe.com";
+    private String allowedUrl="http://localhost:4200";
+
+    private String allowedUrlProd="https://clementbayardphotographe.com";
     static Logger logger= LogManager.getLogger(ClementWsApplication.class);
     public static void main(String[] args) {
         SpringApplication.run(ClementWsApplication.class, args);
@@ -38,10 +40,10 @@ public class ClementWsApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                logger.info("Allowed entering urls : " + allowedUrl);
+                logger.info("Allowed entering urls : " + allowedUrlProd);
 
                 registry.addMapping("/**")
-                        .allowedOrigins(allowedUrl)
+                        .allowedOrigins(allowedUrlProd)
                         .allowedMethods("GET", "POST")
                         .allowedHeaders("Content-Type", "Authorization")
                         .exposedHeaders("Content-Type", "Authorization")

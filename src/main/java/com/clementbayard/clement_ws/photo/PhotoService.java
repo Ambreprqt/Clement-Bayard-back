@@ -84,7 +84,7 @@ public class PhotoService {
         BufferedImage originalImage = ImageIO.read(inputStream);
 
         BufferedImage compressedImage = Thumbnails.of(originalImage)
-                .size(500,500)
+                .size(700,700)
                 .outputQuality(0.5)
                 .asBufferedImage();
 

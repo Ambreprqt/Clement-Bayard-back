@@ -65,11 +65,11 @@ public class PhotoController {
 
     @GetMapping("/{filename}")
     public ResponseEntity<byte[]> compressImage(@PathVariable String filename) {
-        try (InputStream inputStream = resourceLoader.getResource("classpath:/photos/" + filename).getInputStream()) {
+        HttpHeaders headers = new HttpHeaders();
 
+        try (InputStream inputStream = resourceLoader.getResource("classpath:/photos/" + filename).getInputStream()) {
             byte[] compressedImageBytes = photoService.compressImage(inputStream);
 
-            HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.IMAGE_JPEG);
             headers.setContentDispositionFormData("attachment", filename);
             headers.setContentLength(compressedImageBytes.length);
@@ -83,4 +83,5 @@ public class PhotoController {
             return ResponseEntity.status(500).body(null);
         }
     }
+
 }
