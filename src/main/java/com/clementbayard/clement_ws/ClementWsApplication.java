@@ -16,7 +16,7 @@ import java.util.Base64;
 @SpringBootApplication
 public class ClementWsApplication {
 
-    private String allowedUrl="http://localhost:4200";
+    private String allowedUrl="https://clementbayardphotographe.com";
     static Logger logger= LogManager.getLogger(ClementWsApplication.class);
     public static void main(String[] args) {
         SpringApplication.run(ClementWsApplication.class, args);
@@ -41,18 +41,12 @@ public class ClementWsApplication {
                 logger.info("Allowed entering urls : " + allowedUrl);
 
                 registry.addMapping("/**")
-                        .allowedOrigins(allowedUrl)
+                        .allowedOrigins("https://clementbayardphotographe.com")
                         .allowedMethods("GET", "POST")
                         .allowedHeaders("Content-Type", "Authorization")
                         .exposedHeaders("Content-Type", "Authorization")
                         .maxAge(3600);
 
-                registry.addMapping("/upload")
-                        .allowedOrigins()
-                        .allowedMethods()
-                        .allowedHeaders("Content-Type", "Authorization")
-                        .exposedHeaders("Content-Type", "Authorization")
-                        .maxAge(3600);
             }
         };
     }
