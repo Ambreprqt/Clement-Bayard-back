@@ -15,8 +15,6 @@ import java.util.Base64;
 @SpringBootConfiguration
 @SpringBootApplication
 public class ClementWsApplication {
-
-    private String allowedUrl="https://clementbayardphotographe.com";
     static Logger logger= LogManager.getLogger(ClementWsApplication.class);
     public static void main(String[] args) {
         SpringApplication.run(ClementWsApplication.class, args);
@@ -31,24 +29,6 @@ public class ClementWsApplication {
             }
         });
         return factory;
-    }
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                logger.info("Allowed entering urls : " + allowedUrl);
-
-                registry.addMapping("/**")
-                        .allowedOrigins("https://clementbayardphotographe.com")
-                        .allowedMethods("GET", "POST")
-                        .allowedHeaders("Content-Type", "Authorization")
-                        .exposedHeaders("Content-Type", "Authorization")
-                        .maxAge(3600);
-
-            }
-        };
     }
 
 }
