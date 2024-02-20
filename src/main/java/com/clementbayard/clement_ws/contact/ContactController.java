@@ -14,7 +14,6 @@ public class ContactController {
     @Autowired
     private JavaMailSender emailSender;
 
-    @CrossOrigin(origins = "https://www.clementbayardphotographe.com/#/contact")
     @PostMapping("/send-email")
     public String envoyerEmail(@RequestBody ContactForm contactForm) {
         SimpleMailMessage message = new SimpleMailMessage();
