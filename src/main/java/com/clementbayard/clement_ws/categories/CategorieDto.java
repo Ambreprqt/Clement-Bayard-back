@@ -1,6 +1,7 @@
 package com.clementbayard.clement_ws.categories;
 
 import com.clementbayard.clement_ws.article.Article;
+import com.clementbayard.clement_ws.article.ArticleDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class CategorieDto {
     private Long categorieId;
     private String nom;
-    private List<Article> article=new ArrayList<>();
+    private List<ArticleDto> article=new ArrayList<>();
     public void setId(Long id) {
         this.categorieId = id;
     }
@@ -33,11 +34,11 @@ public class CategorieDto {
         this.nom = nom;
     }
 
-    public List<Article> getArticle() {
+    public List<ArticleDto> getArticle() {
         return article;
     }
 
-    public void setArticle(List<Article> article) {
+    public void setArticle(List<ArticleDto> article) {
         this.article = article;
     }
 }

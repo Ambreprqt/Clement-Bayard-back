@@ -1,6 +1,7 @@
 package com.clementbayard.clement_ws.article;
 
 import com.clementbayard.clement_ws.categories.Categorie;
+import com.clementbayard.clement_ws.categories.CategorieDto;
 
 public class ArticleDto {
     private Long id;
@@ -9,8 +10,7 @@ public class ArticleDto {
 
     private String description;
 
-    private Categorie categorie;
-
+    private String categorieNom;
     public void setId(Long id) {
         this.id = id;
     }
@@ -35,11 +35,11 @@ public class ArticleDto {
         this.description = description;
     }
 
-    public Categorie getCategorie() {
-        return categorie;
+    public String getCategorieNom() {
+        return categorieNom;
     }
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
+    public void setCategorieNom(String categorieNom) {
+        this.categorieNom = categorieNom;
     }
 }
