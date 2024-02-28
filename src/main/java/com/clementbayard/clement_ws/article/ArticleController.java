@@ -4,6 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
@@ -16,6 +18,16 @@ public class ArticleController {
         this.service = service;
         this.mapper = mapper;
     }
+    @GetMapping
+    public List<ArticleDto> getAll(){
+        return service.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public ArticleDto getById(@PathVariable long id){
+        return service.getById(id);
+    }
+
     @PostMapping
     public String create(@RequestBody ArticleDto articleDto){
         service.createArticle(articleDto);
@@ -24,7 +36,7 @@ public class ArticleController {
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id){
-        service.deleteArticle(id);
-        return "Article supprimé :o !";
+
+        return service.deleteArticle(id);
     }
 }
